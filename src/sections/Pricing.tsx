@@ -49,7 +49,83 @@ const pricingTiers = [
     ],
   },
 ];
-
+import Checkicon from "@/assets/check.svg";
+import clsx from "clsx";
 export const Pricing = () => {
-  return null;
+  return (
+    <section className="py-24 bg-white">
+      <div className="container">
+        <div className="section-heading">
+          <h2 className="heading text-center">Pricing</h2>
+          <p className="section-desc mt-5">
+            Free forever, Upgrade for unlimited tasks, better security, and
+            exclusive features.
+          </p>
+        </div>
+        <div className="flex flex-col gap-6 items-cente mt-10 lg:flex-row lg:justify-center">
+          {pricingTiers.map(
+            (
+              { title, monthlyPrice, buttonText, popular, inverse, features },
+              index
+            ) => (
+              <div
+                className={clsx(
+                  "p-10 border border-[#F1F1F1] rounded-3xl shadow-[0_7px_14px_#EAEAEA] max-w-xs w-full",
+                  inverse === true && "border-black bg-black text-white"
+                )}
+                key={index}
+              >
+                <div className="flex items-center justify-between">
+                  <h3
+                    className={clsx(
+                      "text-lg font-bold text-black/50",
+                      inverse === true && "text-white/60"
+                    )}
+                  >
+                    {title}
+                  </h3>
+                  {popular === true && (
+                    <div className="inline-flex text-sm px-16 py-1.5 rounded-xl border border-white/20">
+                      <span className="bg-[linear-gradient(to_right,#DD7DDF,#E1CD86,#BBCB92,#71C2EF,#3BFFFF,#DD7DDF)] text-transparent bg-clip-text font-bold">
+                        Popular
+                      </span>
+                    </div>
+                  )}
+                </div>
+                <div className="flex items-baseline gap-1 mt-[30px]">
+                  <span className="text-4xl font-bold tracking-tighter leading-none">
+                    ${monthlyPrice}
+                  </span>
+                  <span
+                    className={clsx(
+                      "tracking-tight font-bold text-black/50",
+                      inverse === true && "text-white"
+                    )}
+                  >
+                    /month
+                  </span>
+                </div>
+                <button
+                  className={clsx(
+                    "btn btn-primary w-full mt-[30px]",
+                    inverse && "bg-white text-black"
+                  )}
+                >
+                  {buttonText}
+                </button>
+                <ul className="flex flex-col gap-5 mt-8">
+                  {features.map((feature, i) => (
+                    <li key={i} className="text-sm flex items-center gap-4">
+                      <Checkicon className="size-5" />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )
+          )}
+        </div>
+      </div>
+    </section>
+  );
 };
