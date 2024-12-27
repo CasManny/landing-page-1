@@ -62,7 +62,7 @@ export const Pricing = () => {
             exclusive features.
           </p>
         </div>
-        <div className="flex flex-col gap-6 items-cente mt-10 lg:flex-row lg:justify-center">
+        <div className="flex flex-col gap-6 items-center mt-10 lg:flex-row lg:justify-center">
           {pricingTiers.map(
             (
               { title, monthlyPrice, buttonText, popular, inverse, features },
